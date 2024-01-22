@@ -14,6 +14,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.statuspages.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import java.lang.RuntimeException
 
 class ApplicationModule : AbstractModule() {
     @Provides
@@ -52,7 +53,7 @@ class ApplicationModule : AbstractModule() {
                 }
                 install(StatusPages) {
                     exception<Throwable> { call, cause ->
-                        call.respond("test")
+                        call.respond(HttpStatusCode.BadRequest, ApiError(cause.message ?: cause::class.java.toString()))
                     }
                 }
             }

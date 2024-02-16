@@ -1,19 +1,21 @@
 package xyz.sanvew
 
 import com.google.inject.Guice
+import io.ktor.client.engine.cio.*
 import io.ktor.server.engine.*
-import xyz.sanvew.location.LocationModule
-import xyz.sanvew.web.ApplicationModule
-import xyz.sanvew.web.HttpClientModule
+import io.ktor.server.netty.*
+import xyz.sanvew.core.CoreModule
+import xyz.sanvew.infrastructure.InfrastructureModule
 
-fun main(args: Array<String>) {
+private val HTTP_CLIENT_ENGINE = CIO.create()
+
+fun main() {
     val modules = listOf(
-        HttpClientModule(),
-        ApplicationModule(),
-        LocationModule(),
+        CoreModule(),
+        InfrastructureModule(httpClientEngine = HTTP_CLIENT_ENGINE)
     )
     val injector = Guice.createInjector(modules)
-    val engine = injector.getInstance(ApplicationEngine::class.java)
+    val engineEnvironment = injector.getInstance(ApplicationEngineEnvironment::class.java)
 
-    engine.start(wait = true)
+    embeddedServer(Netty, engineEnvironment).start(wait = true)
 }

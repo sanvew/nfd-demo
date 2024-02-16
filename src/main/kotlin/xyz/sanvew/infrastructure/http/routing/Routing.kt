@@ -1,4 +1,4 @@
-package xyz.sanvew.web
+package xyz.sanvew.infrastructure.http.routing
 
 import io.ktor.server.routing.*
 

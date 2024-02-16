@@ -1,5 +1,6 @@
 .gradle
 build/
+target/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -34,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Misc ###
+NFD_Тестовое_задание_на_позицию_Middle_Backend_разработчика_150124.pdf

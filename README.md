@@ -1,7 +1,6 @@
 # NFD demo
 
-The project follows [hexagonal ("ports and adapters") architecture](https://romanglushach.medium.com/hexagonal-architecture-the-secret-to-scalable-and-maintainable-code-for-modern-software-d345fdb47347).
-![hexagon](./hexagon.png)
+The project follows [hexagonal ("ports and adapters") architecture](https://thecodest.co/blog/t-strong-he-power-of-hexagonal-architecture/).
 
 ## Run
 ```bash
